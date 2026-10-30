@@ -2,7 +2,7 @@
 
 An ARM-inspired 32-bit CPU written in SystemVerilog. It implements a small subset of the ARMv4 instruction set (data processing, load/store and branch) with every instruction conditional, and each block is verified with a self-checking testbench in ModelSim.
 
-This is the hardware follow-up to my [8-bit CPU simulator in Python](LINK-TO-PYTHON-REPO): I prototyped the architecture in software first, then redesigned it as ARM-style RTL.
+This is the hardware follow-up to my [8-bit CPU simulator in Python](https://github.com/Mysticz11/8-bit-CPU-Simulation): I prototyped the architecture in software first, then redesigned it as ARM-style RTL.
 
 ## Status
 
@@ -27,9 +27,7 @@ Work in progress. Building bottom-up, one tested block at a time.
 - Registers R0-R14, PC held separately; flags N, Z, C, V
 - Every instruction is conditional (`cond` field)
 - Subset: AND, EOR, SUB, ADD, CMP, ORR, MOV, LDR, STR, B
-- No shifter or BL in the MVP (listed as future work)
-
-Instruction formats, opcode table, condition codes, flag rules and example encodings are in [SPEC.md](SPEC.md).
+- No shifter or BL in the MVP (listed as future work).
 
 ## Verification
 
@@ -41,16 +39,13 @@ Every module has a self-checking testbench that prints a pass/fail summary.
 
 ## Running the tests
 
-Requires ModelSim (Intel/Altera edition works). From the project folder:
+Requires ModelSim (the Intel/Altera edition works).
 
-```
-vlib work
-vlog RTL/*.sv
-vsim work.alu_tb
-run -all
-```
+1. Compile all the `.sv` files in `RTL/` (Compile > Compile...).
+2. Start a simulation (Simulate > Start Simulation), expand the `work` library and choose a testbench: `alu_tb`, `regfile_tb` or `cond_check_tb`.
+3. In the Transcript window, type `run -all`. Each testbench prints a pass/fail summary when it finishes.
 
-Replace `alu_tb` with `regfile_tb` or `cond_check_tb` for the other tests. Each prints a summary and, on success, `ALL TESTS PASSED` (or the register file's equivalent message).
+There is another way to do this through commands, but I prefer this process.
 
 ## Repository layout
 
@@ -65,4 +60,4 @@ SystemVerilog, ModelSim (simulation), Quartus (synthesis checks).
 
 ## Future work
 
-Barrel shifter, BL/BX, more data-processing opcodes (ADC, SBC, TST and others), byte loads/stores, pre/post-index addressing, LDM/STM, PC as R15, and a multi-cycle or pipelined core.
+Barrel shifter, BL/BX, more data-processing opcodes (ADC, SBC, TST and others), byte loads/stores, pre/post-index addressing, LDM/STM, PC as R15, and a multi-cycle or pipelined core. End goal is to implement this onto a FPGA and connect it to a display.
