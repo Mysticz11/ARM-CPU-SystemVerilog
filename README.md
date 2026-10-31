@@ -8,7 +8,7 @@ This is the hardware follow-up to my [8-bit CPU simulator in Python](https://git
 
 Work in progress. Building bottom-up, one tested block at a time.
 
-- [x] Architecture spec ([SPEC.md](SPEC.md))
+- [x] Architecture specs and general design
 - [x] ALU with NZCV flags + testbench
 - [x] Register file (16 x 32-bit, 2 read ports, 1 write port) + testbench
 - [x] Condition logic (16 ARM condition codes) + testbench
