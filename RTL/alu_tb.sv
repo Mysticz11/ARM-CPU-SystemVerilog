@@ -106,6 +106,13 @@ module alu_tb;
 
         check("CMP borrow", 4'b1010,
               32'd3, 32'd5, 32'hFFFFFFFE, 4'b1000);
+	
+			// Edge cases
+			check("SUB zero minus one", 4'b0010,
+					32'd0, 32'd1, 32'hFFFFFFFF, 4'b1000);
+
+			check("SUB equal", 4'b0010,
+					32'h12345678, 32'h12345678, 32'd0, 4'b0110);
 
         $display("----------------------------");
         $display("Passed: %0d", passed);
