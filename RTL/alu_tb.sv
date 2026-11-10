@@ -90,7 +90,7 @@ module alu_tb;
         check("EOR", 4'b0001,
               32'hAAAAAAAA, 32'h55555555,
               32'hFFFFFFFF, 4'b1000);
-
+	
         check("EOR zero", 4'b0001,
               32'h12345678, 32'h12345678,
               32'h00000000, 4'b0100);
